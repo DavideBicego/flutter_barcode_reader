@@ -2,12 +2,12 @@
 
 @interface ScannerOverlay()
   @property(nonatomic, retain) UIView *line;
-  @property(nonatomic, retain) CGFloat *barHeight;
+  @property(nonatomic, weak) CGFloat *barHeight;
 @end
 
 @implementation ScannerOverlay
 
-  - (instancetype)initWithFrame:(CGRect)frame : withActionBarHeight(CGFloat)actionBarHeight
+  - (instancetype)initWithFrame:(CGRect)frame withActionBarHeight:(CGFloat)actionBarHeight
   {
     self = [super initWithFrame:frame];
     _barHeight = actionBarHeight;
