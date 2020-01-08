@@ -8,7 +8,7 @@
 @implementation ScannerOverlay
 
   - (void) setNavigationBarHeight:(CGFloat)actionBarHeight{
-    _barHeight = actionBarHeight;
+    _barHeight = &actionBarHeight;
   }
 
   - (instancetype)initWithFrame:(CGRect)frame {
