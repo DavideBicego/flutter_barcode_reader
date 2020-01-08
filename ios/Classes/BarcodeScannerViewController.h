@@ -15,6 +15,7 @@
 @property(nonatomic, retain) MTBBarcodeScanner *scanner;
 @property(nonatomic, weak) id<BarcodeScannerViewControllerDelegate> delegate;
 
-  
+  -(BOOL) shouldAutorotate;
+  -(UIInterfaceOrientationMask) supportedInterfaceOrientations;
   -(id) initWithOptions:(NSDictionary *) options;
 @end
