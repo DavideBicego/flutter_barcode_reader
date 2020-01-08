@@ -7,10 +7,12 @@
 
 @implementation ScannerOverlay
 
-  - (instancetype)initWithFrame:(CGRect)frame :(CGFloat)actionBarHeight
-  {
-    self = [super initWithFrame:frame];
+  - (void) setNavigationBarHeight:(CGFloat)actionBarHeight{
     _barHeight = actionBarHeight;
+  }
+
+  - (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
     if (self) {
       _line = [[UIView alloc] init];
       _line.backgroundColor = UIColor.redColor;
