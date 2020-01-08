@@ -5,5 +5,5 @@
   
   - (void) startAnimating;
   - (void) stopAnimating;
-  - (void) setNavigationBarHeight:(CGFloat)actionBarHeight
+  - (void) setNavigationBarHeight:(CGFloat)actionBarHeight;
 @end
