@@ -2,13 +2,15 @@
 
 @interface ScannerOverlay()
   @property(nonatomic, retain) UIView *line;
+  @property(nonatomic, retain) CGFloat *barHeight;
 @end
 
 @implementation ScannerOverlay
-  
-  - (instancetype)initWithFrame:(CGRect)frame
+
+  - (instancetype)initWithFrame:(CGRect)frame : (CGFloat)actionBarHeight
   {
     self = [super initWithFrame:frame];
+    _barHeight = actionBarHeight;
     if (self) {
       _line = [[UIView alloc] init];
       _line.backgroundColor = UIColor.redColor;
@@ -96,7 +98,7 @@
         CGFloat scanRectHeight = rect.size.height * 0.8f;
         CGFloat scanRectWidth = scanRectHeight * widthMultiplier;
         CGFloat scanRectOriginX = (rect.size.width / 2) - (scanRectWidth / 2);
-        CGFloat scanRectOriginY = (rect.size.height / 2) - (scanRectHeight / 2);
+        CGFloat scanRectOriginY = ((rect.size.height / 2) - (scanRectHeight / 2)) - _barHeight;
         return CGRectMake(scanRectOriginX, scanRectOriginY, scanRectWidth, scanRectHeight);
     }
   }

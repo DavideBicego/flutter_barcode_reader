@@ -13,7 +13,7 @@
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     CGRect bounds = [UIScreen mainScreen].bounds;
-    CGRect reversedBounds = CGRectMake(bounds.origin.x, bounds.origin.y - self.navigationController.navigationBar.frame.size.height , bounds.size.height, bounds.size.width);
+    CGRect reversedBounds = CGRectMake(bounds.origin.x, bounds.origin.y, bounds.size.height, bounds.size.width);
     self.previewView.bounds = reversedBounds;
     self.previewView.frame = reversedBounds;
     [self.scanRect removeFromSuperview];
