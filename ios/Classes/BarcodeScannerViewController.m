@@ -22,7 +22,7 @@
 }
 
 - (void)setupScanRect:(CGRect)bounds {
-    self.scanRect = [[ScannerOverlay alloc] initWithFrame :bounds withActionBarHeight :self.navigationController.navigationBar.frame.size.height];
+    self.scanRect = [[ScannerOverlay alloc] initWithFrame :bounds :self.navigationController.navigationBar.frame.size.height];
     self.scanRect.translatesAutoresizingMaskIntoConstraints = NO;
     self.scanRect.backgroundColor = UIColor.clearColor;
     [self.view addSubview:_scanRect];
@@ -39,7 +39,9 @@
     [_scanRect startAnimating];
 }
 
-- (BOOL)shouldAutorotate {return NO;}
+- (BOOL)shouldAutorotate {
+    return NO;
+}
 
 - (UIInterfaceOrientationMask) supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
@@ -47,7 +49,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.previewView = [[UIView alloc] initWithFrame:self.view.bounds];
+    self.previewView = [[UIView alloc] initWithFrame:self.view.bounds :self.navigationController.navigationBar.frame.size.height];
     self.previewView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:_previewView];
     [self.view addConstraints:[NSLayoutConstraint
