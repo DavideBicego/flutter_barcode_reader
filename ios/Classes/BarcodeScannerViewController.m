@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController?.delegate = self;
     self.previewView = [[UIView alloc] initWithFrame:self.view.bounds];
     self.previewView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:_previewView];
@@ -143,6 +144,12 @@
             device.torchMode = AVCaptureTorchModeOff;
         }
         [device unlockForConfiguration];
+    }
+}
+
+extension UIViewController: UINavigationControllerDelegate {
+    public func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
+        return navigationController.topViewController?.supportedInterfaceOrientations
     }
 }
 
