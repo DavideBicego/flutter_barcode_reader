@@ -2,14 +2,9 @@
 
 @interface ScannerOverlay()
   @property(nonatomic, retain) UIView *line;
-  @property(nonatomic, readwrite) CGFloat *barHeight;
 @end
 
 @implementation ScannerOverlay
-
-  - (void) setNavigationBarHeight:(CGFloat)actionBarHeight{
-    _barHeight = &actionBarHeight;
-  }
 
   - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -100,7 +95,7 @@
         CGFloat scanRectHeight = rect.size.height * 0.8f;
         CGFloat scanRectWidth = scanRectHeight * widthMultiplier;
         CGFloat scanRectOriginX = (rect.size.width / 2) - (scanRectWidth / 2);
-        CGFloat scanRectOriginY = ((rect.size.height / 2) - (scanRectHeight / 2)) - *_barHeight;
+        CGFloat scanRectOriginY = (rect.size.height / 2) - (scanRectHeight / 2);
         return CGRectMake(scanRectOriginX, scanRectOriginY, scanRectWidth, scanRectHeight);
     }
   }
