@@ -69,6 +69,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [super viewDidAppear:animated];
     if (self.scanner.isScanning) {
         [self.scanner stopScanning];
@@ -84,6 +85,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [self.scanner stopScanning];
     [super viewWillDisappear:animated];
     if ([self isFlashOn]) {

@@ -20,7 +20,6 @@
 }
 
 - (void)showBarcodeView {
-    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     BarcodeScannerViewController *scannerViewController = [[BarcodeScannerViewController alloc] init];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:scannerViewController];
     scannerViewController.delegate = self;
@@ -29,14 +28,12 @@
 
 - (void)barcodeScannerViewController:(BarcodeScannerViewController *)controller didScanBarcodeWithResult:(NSString *)result {
     if (self.result) {
-        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
         self.result(result);
     }
 }
 
 - (void)barcodeScannerViewController:(BarcodeScannerViewController *)controller didFailWithErrorCode:(NSString *)errorCode {
     if (self.result){
-        [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
         self.result([FlutterError errorWithCode:errorCode
                                         message:nil
                                         details:nil]);
