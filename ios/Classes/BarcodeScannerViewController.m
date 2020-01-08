@@ -12,6 +12,14 @@
 
 - (BOOL)shouldAutorotate {return NO;}
 
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return UIInterfaceOrientationPortrait;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.previewView = [[UIView alloc] initWithFrame:self.view.bounds];
