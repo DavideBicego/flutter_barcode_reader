@@ -2,6 +2,7 @@
 
 @interface ScannerOverlay()
   @property(nonatomic, retain) UIView *line;
+  @property(nonatomic, readwrite, retain) CGFloat *barHeight;
 @end
 
 @implementation ScannerOverlay
