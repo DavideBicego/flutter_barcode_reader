@@ -7,7 +7,7 @@
 
 @implementation ScannerOverlay
 
-  - (instancetype)initWithFrame:(CGRect)frame : (CGFloat)actionBarHeight
+  - (instancetype)initWithFrame:(CGRect)frame : withActionBarHeight(CGFloat)actionBarHeight
   {
     self = [super initWithFrame:frame];
     _barHeight = actionBarHeight;

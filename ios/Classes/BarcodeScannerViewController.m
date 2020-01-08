@@ -22,7 +22,7 @@
 }
 
 - (void)setupScanRect:(CGRect)bounds {
-    self.scanRect = [[ScannerOverlay alloc] initWithFrame:bounds];
+    self.scanRect = [[ScannerOverlay alloc] initWithFrame:bounds withActionBarHeight:self.navigationController.navigationBar.frame.size.height];
     self.scanRect.translatesAutoresizingMaskIntoConstraints = NO;
     self.scanRect.backgroundColor = UIColor.clearColor;
     [self.view addSubview:_scanRect];
