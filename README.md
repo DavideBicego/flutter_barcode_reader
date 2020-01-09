@@ -1,3 +1,7 @@
+Differences between my fork and the main apptreesoftware/flutter_barcode_reader:
+- screen rotation is locked when scanner is showing
+- in landscape orientation the scanner is shown correctly
+
 # Barcode Scanner
 
 A flutter plugin for scanning 2D barcodes and QR codes. 
