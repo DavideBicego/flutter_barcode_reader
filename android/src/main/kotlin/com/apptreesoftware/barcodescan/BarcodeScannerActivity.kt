@@ -2,6 +2,7 @@ package com.apptreesoftware.barcodescan
 
 import android.Manifest
 import android.app.Activity
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -31,8 +32,8 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         super.onCreate(savedInstanceState)
 
         //lock orientation
-        var orientation: Int = getActivity().getRequestedOrientation()
-        val rotation = (getActivity().getSystemService(
+        var orientation: Int = requestedOrientation
+        val rotation = (getSystemService(
                 Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.rotation
         orientation = when (rotation) {
             Surface.ROTATION_0 -> ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
@@ -41,7 +42,7 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
             else -> ActivityInfo.SCREEN_ORIENTATION_REVERSE_LANDSCAPE
         }
 
-        getActivity().setRequestedOrientation(orientation)
+        requestedOrientation = orientation
 
         title = ""
         scannerView = ZXingScannerView(this)
@@ -89,7 +90,7 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
 
     override fun handleResult(result: Result?) {
         val intent = Intent()
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         intent.putExtra("SCAN_RESULT", result.toString())
         setResult(Activity.RESULT_OK, intent)
         finish()
