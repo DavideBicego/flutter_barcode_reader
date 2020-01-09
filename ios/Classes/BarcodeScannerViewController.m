@@ -13,7 +13,7 @@
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     CGRect bounds = [UIScreen mainScreen].bounds;
-    CGRect reversedBounds = CGRectMake(bounds.origin.x, bounds.origin.y + self.navigationController.navigationBar.frame.size.height, bounds.size.height, bounds.size.width);
+    CGRect reversedBounds = CGRectMake(bounds.origin.x, bounds.origin.y, bounds.size.height, bounds.size.width);
     self.previewView.bounds = reversedBounds;
     self.previewView.frame = reversedBounds;
     [self.scanRect removeFromSuperview];
@@ -43,11 +43,8 @@
     return NO;
 }
 
-- (UIInterfaceOrientationMask) supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskPortrait;
-}
-
 - (void)viewDidLoad {
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
     [super viewDidLoad];
     self.previewView = [[UIView alloc] initWithFrame:self.view.bounds];
     self.previewView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -85,7 +82,6 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [self.scanner stopScanning];
     [super viewWillDisappear:animated];
     if ([self isFlashOn]) {
@@ -99,6 +95,7 @@
         [self.scanner stopScanning];
          AVMetadataMachineReadableCodeObject *code = codes.firstObject;
         if (code) {
+            [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
             [self.delegate barcodeScannerViewController:self didScanBarcodeWithResult:code.stringValue];
             [self dismissViewControllerAnimated:NO completion:nil];
         }
@@ -106,6 +103,7 @@
 }
 
 - (void)cancel {
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     [self.delegate barcodeScannerViewController:self didFailWithErrorCode:@"USER_CANCELED"];
     [self dismissViewControllerAnimated:true completion:nil];
 }
