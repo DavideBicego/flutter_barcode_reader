@@ -32,10 +32,9 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         super.onCreate(savedInstanceState)
 
         //lock orientation
-        var orientation: Int = requestedOrientation
         val rotation = (getSystemService(
                 Context.WINDOW_SERVICE) as WindowManager).defaultDisplay.rotation
-        orientation = when (rotation) {
+        var orientation = when (rotation) {
             Surface.ROTATION_0 -> ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
             Surface.ROTATION_90 -> ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
             Surface.ROTATION_180 -> ActivityInfo.SCREEN_ORIENTATION_REVERSE_PORTRAIT
