@@ -2,7 +2,6 @@ package com.apptreesoftware.barcodescan
 
 import android.Manifest
 import android.app.Activity
-import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -97,7 +96,7 @@ class BarcodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
 
     fun finishWithError(errorCode: String) {
         val intent = Intent()
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
         intent.putExtra("ERROR_CODE", errorCode)
         setResult(Activity.RESULT_CANCELED, intent)
         finish()
